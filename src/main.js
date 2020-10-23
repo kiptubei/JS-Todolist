@@ -1,4 +1,16 @@
-console.clear();
+//console.clear();
+
+let todoName = 'default';
+
+let task = [
+	{
+		name:'default',
+		title:'',
+		desc:'',
+		priority: 1,
+		dueDate: Date.now()
+	}
+];
 
 // (function() {
 	const todo = {
@@ -28,7 +40,9 @@ console.clear();
 		},
 		addTodo: function(event) {
 			this.todo.push((typeof event === "string") ? event : this.$input.val());
-			this.render();
+			todoName = this.todo.length-1;
+			console.log(number);
+						this.render();
 			this.$input.val('');
 		},
 		deleteTodo: function(event) {
@@ -44,6 +58,43 @@ console.clear();
 	todo.init();
 //start of my to-do project
 
+const tasks = {
+	data: [],
+
+	init: function() {
+		this.cacheDom();
+		this.bindEvents();
+	},
+	cacheDom: function() {
+		this.$el = $('#tasksModule');
+		this.$form = this.$el.find('form');
+		this.$button = this.$form.find('#btn');
+		this.$title = this.$form.find('#title');
+		console.log(this.$button);
+	},
+	bindEvents: function() {
+		this.$button.on('click', this.submitDetailsForm.bind(this));
+		console.log(this.data);
+	},
+	submitDetailsForm: function (e) {
+		this.$form.on('submit', (e) => {
+		  e.preventDefault();
+
+		  const title = this.$title.val();
+			console.log(this.$title.val());
+			const desc = document.querySelector('#desc').value;
+			console.log(desc);
+		  const date = document.querySelector('#due-date').value;
+		  const priority = document.querySelector('#priority').checked;
+
+			this.data.push(valuesFactory(title,desc,date,priority));
+		  empty();
+		});
+	     //this.data.push(this.$form.submit());
+			// console.log(this.data);
+	    }
+};
+
 function openForm() {
 document.getElementById("myForm").style.display = "block";
 }
@@ -52,6 +103,7 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 
+tasks.init();
 
 let data = [];
 
@@ -81,20 +133,20 @@ function empty() {
   document.querySelector('#priority').checked = false;
 }
 
-const form_data = document.querySelector('.form-container');
-form_data.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const title = document.querySelector('#title').value;
-	const desc = document.querySelector('#desc').value;
-  const date = document.querySelector('#due-date').value;
-  const priority = document.querySelector('#priority').checked;
-  // const book = new Book(author, title, pages, read);
-  // addBookToLibrary(book);
-
-	data.push(valuesFactory(title,desc,date,priority));
-  empty();
-});
+// const form_data = document.querySelector('.form-container');
+// form_data.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//
+//   const title = document.querySelector('#title').value;
+// 	const desc = document.querySelector('#desc').value;
+//   const date = document.querySelector('#due-date').value;
+//   const priority = document.querySelector('#priority').checked;
+//   // const book = new Book(author, title, pages, read);
+//   // addBookToLibrary(book);
+//
+// 	data.push(valuesFactory(title,desc,date,priority));
+//   empty();
+// });
 
 
 console.log(data);
