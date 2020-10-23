@@ -41,7 +41,7 @@ let task = [
 		addTodo: function(event) {
 			this.todo.push((typeof event === "string") ? event : this.$input.val());
 			todoName = this.todo.length-1;
-			console.log(number);
+			console.log(todoName);
 						this.render();
 			this.$input.val('');
 		},
@@ -87,7 +87,7 @@ const tasks = {
 		  const date = document.querySelector('#due-date').value;
 		  const priority = document.querySelector('#priority').checked;
 
-			this.data.push(valuesFactory(number,title,desc,date,priority));
+			task.push(valuesFactory(todoName,title,desc,date,priority));
 		  this.empty();
 		});
 	     //this.data.push(this.$form.submit());
@@ -111,10 +111,8 @@ function closeForm() {
 
 tasks.init();
 
-let data = [];
-
-const valuesFactory=(title,desc,date,priority)=>{
-	return {title,desc,date,priority}
+const valuesFactory=(name,title,desc,date,priority)=>{
+	return {name,title,desc,date,priority}
 }
 
-console.log(data);
+console.log(task);
