@@ -87,12 +87,18 @@ const tasks = {
 		  const date = document.querySelector('#due-date').value;
 		  const priority = document.querySelector('#priority').checked;
 
-			this.data.push(valuesFactory(title,desc,date,priority));
-		  empty();
+			this.data.push(valuesFactory(number,title,desc,date,priority));
+		  this.empty();
 		});
 	     //this.data.push(this.$form.submit());
-			// console.log(this.data);
-	    }
+			 console.log(this.data);
+		 },
+		 empty: function () {
+		   this.$form.find('#desc').val('');
+		   this.$form.find('#title').val('');
+		   this.$form.find('#due-date').val('');
+		   document.querySelector('#priority').checked = false;
+		 }
 };
 
 function openForm() {
@@ -110,43 +116,5 @@ let data = [];
 const valuesFactory=(title,desc,date,priority)=>{
 	return {title,desc,date,priority}
 }
-	//
-	// let form_data = document.getElementById("form_it");
-  //  console.log(form_data);
-	// form_data.onsubmit = function(event) {
-  //   event.preventDefault();
-  //   var formData = new FormData(document.getElementById('form_it'));
-	// 	let title = formData.get('title');
-	//   let desc = formData.get('desc');
-	// 	let date = formData.get('date');
-	// 	let priority = formData.get('priority');
-	//
-	//   data.push(valuesFactory(title,desc,date,priority));
-  // }
-
-
-
-function empty() {
-  document.querySelector('#desc').value = '';
-  document.querySelector('#title').value = '';
-  document.querySelector('#due-date').value = '';
-  document.querySelector('#priority').checked = false;
-}
-
-// const form_data = document.querySelector('.form-container');
-// form_data.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//
-//   const title = document.querySelector('#title').value;
-// 	const desc = document.querySelector('#desc').value;
-//   const date = document.querySelector('#due-date').value;
-//   const priority = document.querySelector('#priority').checked;
-//   // const book = new Book(author, title, pages, read);
-//   // addBookToLibrary(book);
-//
-// 	data.push(valuesFactory(title,desc,date,priority));
-//   empty();
-// });
-
 
 console.log(data);
