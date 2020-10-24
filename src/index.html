@@ -13,7 +13,7 @@
       <ul id="todo">
         <script id="todo-template" type="text/template">
           {{#todo}}
-              <li>
+              <li id ="todo-list" onclick = "showTasks()">
                   <!-- <span>{{.}}</span> -->
               <button class="open-button" onclick="openForm()">{{.}}</button>
 
@@ -36,6 +36,9 @@
           {{/tasks}}
         </script>
       </ul>
+
+      <p id = "testing">
+       </p>
       <!-- <button class="open-button" onclick="openForm()">New Task</button> -->
       <div class="form-popup" id="myForm">
         <form class="form-container" id= "form_it" >
