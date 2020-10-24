@@ -8,7 +8,7 @@ let task = [
     title: "create tasks",
     desc: "create tasks by clicking on a todo button (e.g default) in left panel",
   	date: "01-01-1970",
-		priority: false,
+		priority: "low",
   },
 ];
 
@@ -101,8 +101,13 @@ const tasks = {
 			console.log(date);
       const priority = document.querySelector("#priority").checked;
 			console.log(priority);
+			let prty = 'low'
+			if(priority == false){
+				prty = 'high';
+			}
 
-      task.push(valuesFactory(todoName, title, desc, date, priority));
+
+      task.push(valuesFactory(todoName, title, desc, date, prty));
       this.empty();
       showTasks();
       console.log(task);
@@ -163,17 +168,6 @@ function openForm() {
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
-}
-
-function dates(today) {
-  today = new Date();
-  var dd = String(today.getDate()).padStart(2, "0");
-  var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-  var yyyy = today.getFullYear();
-
-  today = dd + "-" + mm + "-" + yyyy;
-
-  return today;
 }
 
 tasks.init();
