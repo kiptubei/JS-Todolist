@@ -65,7 +65,7 @@ const todo = {
 	}
 };
 
-todo.init();
+
 //start of my to-do project
 
 const tasks = {
@@ -176,8 +176,11 @@ function closeForm() {
 }
 
 window.closeForm = closeForm;
-tasks.init();
+
 
 const valuesFactory = (name, title, desc, date, priority) => {
   return { name, title, desc, date, priority };
 };
+
+todo.init();
+tasks.init();
