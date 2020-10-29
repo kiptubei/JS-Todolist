@@ -1,4 +1,5 @@
 //console.clear();
+import "./style.css";
 
 let todoName = "default";
 
@@ -20,7 +21,7 @@ const todo = {
     this.cacheDom();
     this.render();
     this.bindEvents();
-		showTasks();
+		//showTasks();
   },
   cacheDom: function () {
     this.$el = $("#todoModule");
@@ -73,7 +74,7 @@ const tasks = {
   init: function () {
     this.cacheDom();
     this.bindEvents();
-		showTasks();
+		//showTasks();
     //this.showTasks();
   },
   cacheDom: function () {
@@ -141,7 +142,7 @@ const tasks = {
   // }
 };
 
-function showTasks() {
+function showTasks(){
 	let tasksData = task.filter(function (taskk) {
 		return taskk.name == todoName;
 
@@ -162,14 +163,19 @@ function showTasks() {
 	}
 }
 
+window.showTasks = showTasks;
+
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
+
+window.openForm = openForm;
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 
+window.closeForm = closeForm;
 tasks.init();
 
 const valuesFactory = (name, title, desc, date, priority) => {
